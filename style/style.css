@@ -1,0 +1,629 @@
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #286b75;
+}
+
+::-webkit-scrollbar-track {
+    background: #39c2d7;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #39c2d7;
+}
+
+/*..............................................*/
+
+@keyframes display {
+    0% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 1;
+    }
+}
+
+@keyframes undisplay {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        visibility: hidden;
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 50% 0;
+    }
+    100% {
+        background-position: 50% 100%;
+    }
+}
+
+@keyframes fromLeftToMid {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fromMidToRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes fromRightToMid {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fromMidToLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/*..............................................*/
+
+*,
+::after,
+::before {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    font-size: 18px;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+    cursor: default;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    line-height: 1.5;
+
+    max-height: 100vh;
+    margin: 0;
+
+    color: #fff;
+    background-color: #202528;
+}
+
+header {
+    height: 100px;
+    min-height: 75px;
+}
+
+main {
+    height: calc(100vh - 40px);
+
+    border-bottom: 1px #39c2d7 solid;
+}
+
+footer {
+    max-width: 1340px;
+    height: 40px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+a {
+    text-decoration: underline;
+}
+
+a,
+a:hover,
+a:focus {
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: none;
+
+    text-shadow: 0 0 10px #ebebeb;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+
+    margin-top: 0;
+    margin-bottom: .5rem;
+
+    text-align: center;
+
+    color: inherit;
+}
+
+h1 {
+    display: none;
+}
+
+h2 {
+    font-size: 2.5rem;
+
+    clear: both;
+
+    padding-bottom: 5px;
+
+    border-bottom: 1px solid #8a8a8a;
+}
+
+h3 {
+    font-size: 1.75rem;
+
+    clear: both;
+
+    padding-bottom: 5px;
+
+    border-bottom: 1px solid #8a8a8a;
+}
+
+h4 {
+    font-size: 1.5rem;
+
+    clear: both;
+}
+
+dd,
+dt {
+    font-size: 1rem;
+
+    display: inline-block;
+
+    padding: 12px 0;
+
+    text-align: left;
+    vertical-align: top;
+}
+
+dt {
+    width: 25%;
+}
+
+dd {
+    width: 75%;
+    margin: 0;
+}
+
+/*..............................................*/
+
+.tabs {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+}
+
+.tabs > li {
+    font-size: 1rem;
+
+    display: inline-block;
+
+    height: 100px;
+
+    vertical-align: top;
+}
+
+.tabs > li > div {
+    position: absolute;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+
+    overflow: auto;
+
+    width: 100%;
+    padding-bottom: 10px;
+
+    border-top: #39c2d7 10px solid;
+    background-color: #39c2d7;
+}
+
+.tabs input[type='radio'] {
+    position: absolute;
+
+    opacity: 0;
+}
+
+.tabs input[type='radio'] + label {
+    font-size: 50px;
+    line-height: 100px;
+
+    display: inline-block;
+
+    width: 300px;
+    padding: 0 10px;
+
+    cursor: pointer;
+    text-decoration: underline;
+
+    color: #fff;
+}
+
+.tabs input[type='radio'] + label i {
+    display: none;
+}
+
+.tabs input[type='radio'] + label:hover {
+    text-decoration: none;
+
+    background-color: #39c2d745;
+    text-shadow: 0 0 10px #ebebeb;
+}
+
+.tabs input[type='radio']:checked + label {
+    position: relative;
+    z-index: 1;
+
+    animation: .5s gradient linear forwards;
+    text-decoration: none;
+
+    background: linear-gradient(to bottom, #39c2d745, #39c2d745, #39c2d7) 0 0 / 300% 300%;
+}
+
+.tabs input[type='radio'] ~ div {
+    animation: .5s undisplay linear forwards;
+
+    opacity: 0;
+}
+
+.tabs input[type='radio']:checked:not(:disabled) ~ div {
+    animation: .5s display linear forwards;
+
+    opacity: 1;
+}
+
+.tabs input[type='radio']:disabled + label {
+    cursor: no-drop;
+
+    opacity: .5;
+}
+
+
+/*..............................................*/
+
+.carousel-item {
+    position: absolute;
+
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+    margin: 0 0 1rem;
+
+    animation: .5s fromMidToLeft linear forwards;
+}
+
+.carousel-item.active {
+    animation-name: fromRightToMid;
+}
+
+.carousel-inner {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+
+    padding: 10px;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid #8a8a8a;
+    border-radius: 5px;
+    background-color: rgba(34, 34, 34, .81);
+    text-shadow: 0 0 2px black;
+}
+
+.used-skills {
+    text-align: left;
+}
+
+.carousel-indicators {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 50%;
+
+    display: flex;
+
+    width: 222px;
+    height: 30px;
+    padding-left: 0;
+
+    list-style: none;
+
+    transform: translate(-50%);
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: rgba(34, 34, 34, .81);
+
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-indicators li {
+    position: relative;
+
+    max-width: 30px;
+    height: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+
+    cursor: pointer;
+    text-indent: -999px;
+
+    background-color: rgba(255, 255, 255, .5);
+
+    flex: 1 0 auto;
+}
+
+.carousel-indicators li.active {
+    background-color: #fff;
+}
+
+.carousel-indicators li::before {
+    position: absolute;
+    top: -10px;
+    left: 0;
+
+    display: inline-block;
+
+    width: 100%;
+    height: 10px;
+
+    content: '';
+}
+
+.carousel-indicators li::after {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+
+    display: inline-block;
+
+    width: 100%;
+    height: 10px;
+
+    content: '';
+}
+
+.carousel-control {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    display: flex;
+
+    width: 15%;
+
+    cursor: pointer;
+
+    opacity: .8;
+    color: #fff;
+
+    justify-content: center;
+}
+
+.carousel-control:hover,
+.carousel-control:hover .carousel-control-icon {
+    opacity: 1;
+}
+
+.carousel-control-prev {
+    left: 0;
+
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(34, 34, 34));
+}
+
+.carousel-control-next {
+    right: 0;
+
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(34, 34, 34));
+}
+
+.carousel-control-icon {
+    display: inline-block;
+
+    width: 50px;
+    height: 100%;
+
+    opacity: .5;
+    background-image: url(./../img/arr.png);
+    background-repeat: no-repeat;
+}
+
+.carousel-control-icon-prev {
+    left: 0;
+
+    background-position: left center;
+}
+
+.carousel-control-icon-next {
+    right: 0;
+
+    background-position: right center;
+}
+
+.carousel-img {
+    max-width: 100%;
+
+    object-fit: cover;
+}
+
+/*..............................................*/
+
+.wrapper {
+    max-width: 1340px;
+    min-height: 100%;
+    margin: auto;
+    padding: 30px;
+
+    background-color: #202528;
+}
+
+.cv_column {
+    font-size: 1rem;
+
+    display: inline-block;
+
+    padding: 10px;
+
+    vertical-align: top;
+}
+
+.cv_column.resume {
+    width: 50%;
+
+    background-color: #34393c;
+}
+
+.cv_column.skills {
+    width: 25%;
+}
+
+.clear_font_size {
+    font-size: 0;
+}
+
+.contacts-list {
+    padding: 0;
+
+    list-style: none;
+}
+
+.resume dd:not(:first-of-type),
+.resume dt:not(:first-of-type) {
+    padding-top: 8px;
+
+    border-top: 1px solid #fff;
+}
+
+
+.avatar {
+    position: relative;
+
+    display: block;
+
+    width: 150px;
+    height: 150px;
+    margin: auto;
+
+    border-radius: 50%;
+}
+
+.skill {
+    line-height: 36px;
+
+    display: block;
+    float: left;
+
+    width: auto;
+    min-height: 1.85rem;
+    margin: 0 5px 5px 0;
+    padding: 0 5px;
+
+    color: black;
+    background: #39c2d7;
+}
+
+
+.links_set {
+    padding: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+
+.links_set li {
+    font-size: 1rem;
+
+    display: inline-block;
+
+    margin: 0 15px;
+}
+
+.links_set a {
+    font-size: 20px;
+}
+
+.signature {
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+
+    float: right;
+
+    padding: 0 10px;
+}
+
+/*..............................................*/
+
+.past_projects {
+    text-align: left;
+}
+
+.past_projects h3 {
+    border: none;
+}
+
+/*..............................................*/
+
+@media (max-width:900px) {
+    .tabs input[type='radio'] + label {
+        width: 100px;
+    }
+
+    .tabs input[type='radio'] + label span {
+        display: none;
+    }
+
+    .tabs input[type='radio'] + label i {
+        display: inline-block;
+    }
+}
